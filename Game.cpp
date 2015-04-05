@@ -62,7 +62,7 @@ char check_input(char request)
 	cin >> request;
 
 	try {
-		if (request != 'y' && request != 'n' && request != 'Y' && request != 'N') throw request;
+		if (request != 'Y' && request != 'N' && request != 'y' && request != 'n') throw request;
 	} catch (char) {
 		cout << endl << "The request is invalid." << endl << " Please enter a new one:";
 		request = check_input(request);}				// the computer should only accept four possible inputs;
