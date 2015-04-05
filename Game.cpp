@@ -1,16 +1,18 @@
-#include <cstdlib>			//éšæœºæ•°ç”Ÿæˆå™¨å‡½æ•°åœ¨è¿™ä¸ªæ ‡å‡†åº“ä¸­ï¼›
-#include <ctime>			//è°ƒç”¨ç³»ç»Ÿæ—¶é—´å‡½æ•°åœ¨è¿™ä¸ªæ ‡å‡†åº“ä¸­ï¼›
+#include <cstdlib>			//Ëæ»úÊıÉú³ÉÆ÷º¯ÊıÔÚÕâ¸ö±ê×¼¿âÖĞ£»
+#include <ctime>			//µ÷ÓÃÏµÍ³Ê±¼äº¯ÊıÔÚÕâ¸ö±ê×¼¿âÖĞ£»
 #include <iostream>
 using namespace std;
 
-void main()
+char check_input(char request);
+
+int main()
 {
-	int num[6], n = 0, w = 0, i, j, k;			//å®šä¹‰ä¸€ä¸ªå…­ä¸ªæ•°çš„æ•°ç»„ï¼Œç”¨nå’Œwåˆ†åˆ«è¡¨ç¤ºç©å’Œèµ¢çš„å±€æ•°ï¼›
+	int num[6], n = 0, w = 0, i, j, k;			//¶¨ÒåÒ»¸öÁù¸öÊıµÄÊı×é£¬ÓÃnºÍw·Ö±ğ±íÊ¾ÍæºÍÓ®µÄ¾ÖÊı£»
 	char request;							
 
-	srand(time(NULL));							//ç”Ÿæˆéšæœºæ•°ç§å­ï¼›
+	srand(time(NULL));							//Éú³ÉËæ»úÊıÖÖ×Ó£»
 
-	num[0] = rand() % 10;						//ç”Ÿæˆä¸‰ä¸ª0åˆ°9çš„ä¸åŒéšæœºæ•°ï¼›
+	num[0] = rand() % 10;						//Éú³ÉÈı¸ö0µ½9µÄ²»Í¬Ëæ»úÊı£»
 	do {
 		num[1] = rand() % 10;					
 	} while (num[1] == num[0]);
@@ -18,16 +20,16 @@ void main()
 		num[2] = rand() % 10;
 	   } while (num[2] == num[0] || num[2] == num[1]);
 
-	cout << "éœ€è¦ç©æ¸¸æˆå—ï¼ˆY/Nï¼‰? ";			
-	cin >> request;
+	cout << "ĞèÒªÍæÓÎÏ·Âğ£¨Y/N£©? ";
 
-	while (request == 'Y') {
+	request = check_input(request);
+	while (request == 'Y' || request == 'y') {
 	++n;
-	for (i = 0; i < 7; ++i) {						//ç©å®¶æ¯å±€æ¸¸æˆåªæœ‰ä¸ƒæ¬¡æœºä¼šï¼›
-	cout << "è¯·è¾“å…¥ä½ çŒœæµ‹çš„æ•°å­—ï¼š";
+	for (i = 0; i < 7; ++i) {						//Íæ¼ÒÃ¿¾ÖÓÎÏ·Ö»ÓĞÆß´Î»ú»á£»
+	cout << "ÇëÊäÈëÄã²Â²âµÄÊı×Ö£º";
 	cin >> num[3] >> num[4] >> num[5];
 
-	int count1 = 0, count2 = 0;						//count1,count2åˆ†åˆ«è®¡æ•°æ•°å­—æ­£ç¡®ä¸”ä½ç½®æ­£ç¡®çš„æ•°å­—ä¸ªæ•°å’Œæ•°å­—æ­£ç¡®ä½†ä½ç½®ä¸æ­£ç¡®çš„æ•°å­—ä¸ªæ•°ï¼›
+	int count1 = 0, count2 = 0;						//count1,count2·Ö±ğ¼ÆÊıÊı×ÖÕıÈ·ÇÒÎ»ÖÃÕıÈ·µÄÊı×Ö¸öÊıºÍÊı×ÖÕıÈ·µ«Î»ÖÃ²»ÕıÈ·µÄÊı×Ö¸öÊı£»
 
 	for (j = 0; j < 3; ++j) {
 	if (num[j+3] == num[j]) ++count1;
@@ -37,18 +39,33 @@ void main()
 								}
 		 }
 						   }
-	if (count1 == 3) {							//å½“ç»“æœä¸º3A0Bæ—¶ï¼Œç©å®¶èµ¢å¾—è¿™å±€æ¸¸æˆï¼›
+	if (count1 == 3) {							//µ±½á¹ûÎª3A0BÊ±£¬Íæ¼ÒÓ®µÃÕâ¾ÖÓÎÏ·£»
 	++w; break;
 					 }
 	else cout << count1 << 'A' << count2 << 'B' << endl;
 						   }
-	if (i == 7) cout << "å¾ˆé—æ†¾ï¼Œä½ æ²¡æœ‰åœ¨è§„å®šæ¬¡æ•°å†…çŒœå¯¹ã€‚ç­”æ¡ˆæ˜¯" << num[0] << num[1] << num[2];
-	else cout << "æ­å–œï¼Œä½ çŒœå¯¹äº†" << endl;
-	cout << "éœ€è¦ç©æ¸¸æˆå—ï¼ˆY/Nï¼‰? ";
-	cin >> request;
-						  }
-	if (request == 'N') cout << "ä½ ä¸€å…±ç©äº†" << n << "å±€ï¼Œèµ¢äº†" << w << "å±€ï¼Œè¾“äº†" << n-w << "å±€";		//è¾“å‡ºç©å®¶çš„æ¸¸æˆç»“æœï¼›
-	else cout << "è¾“å…¥æœ‰è¯¯ï¼";				//è¾“å…¥æ£€æŸ¥ï¼›
-	
+	if (i == 7) cout << "ºÜÒÅº¶£¬ÄãÃ»ÓĞÔÚ¹æ¶¨´ÎÊıÄÚ²Â¶Ô¡£´ğ°¸ÊÇ" << num[0] << num[1] << num[2];
+	else cout << "¹§Ï²£¬Äã²Â¶ÔÁË" << endl;
+
+	cout << "ĞèÒªÍæÓÎÏ·Âğ£¨Y/N£©? ";
+
+	request = check_input(request);}
+	cout << "ÄãÒ»¹²ÍæÁË" << n << "¾Ö£¬Ó®ÁË" << w << "¾Ö£¬ÊäÁË" << n-w << "¾Ö" << endl;		//Êä³öÍæ¼ÒµÄÓÎÏ·½á¹û£»
+
 	system("pause");
+
+	return 0;
+}
+
+char check_input(char request)
+{
+	cin >> request;
+
+	try {
+		if (request != 'y' && request != 'n' && request != 'Y' && request != 'N') throw request;
+	} catch (char) {
+		cout << endl << "The request is invalid." << endl << " Please enter a new one:";
+		request = check_input(request);}				// the computer should only accept four possible inputs;
+
+	return request;
 }
