@@ -45,8 +45,6 @@ void shuffle(int card[ ])
 		randNum = rand() % (52 - k);
 		card[k] = num[randNum];
 		num[randNum] = num[51 - k];}				// the same card should not repeat twice;
-	
-	system("pause");
 }
 
 double player_s_turn(double sum1, int card[ ])
